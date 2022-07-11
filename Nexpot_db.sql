@@ -1,5 +1,4 @@
 create database IF NOT EXISTS Nexpot;
-use Nexpot;
 
 set foreign_key_checks = 0;   -- 외래키 체크하지 않는 것으로 설정
 drop table IF EXISTS youtube cascade;   -- 기존 student 테이블 제거  
@@ -8,9 +7,11 @@ drop table IF EXISTS places cascade;   -- 기존 enroll 테이블 제거
 set foreign_key_checks = 1;   -- 외래키 체크하는 것으로 설정
 
 create table youtube ( 
-	channelname varchar(15) NOT NULL, 
 	videoID CHAR(11) NOT NULL, 
+	channelname varchar(15) NOT NULL, 
 	title varchar(100) NOT NULL,
+    Thumbnail varchar(48) NOT NULL,
+    youtime date NOT NULL,
 	views int DEFAULT 0,
 	youtlikes INT default 0,
     lencomments INT default 0,
@@ -21,7 +22,7 @@ create table comments (
 	commID varchar(20) NOT NULL, 
 	videoID CHAR(11) NOT NULL, 
 	reply varchar(200) NOT NULL,
-	replylieks int DEFAULT 0,
+	replylikes int DEFAULT 0,
 	primary key (commID),
     FOREIGN KEY(videoID) REFERENCES youtube(videoID) 
 		ON UPDATE CASCADE ON DELETE CASCADE
@@ -43,5 +44,7 @@ create table places (
     FOREIGN KEY(videoID) REFERENCES youtube(videoID) 
 		ON UPDATE CASCADE ON DELETE CASCADE
     ) ;
-    select * from youtube;
-    select * from places;
+select * from youtube;
+select * from places;
+
+use Nexpot;
