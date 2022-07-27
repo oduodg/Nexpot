@@ -1,0 +1,13 @@
+{% for value in youtube_info %}
+    <br>
+    <br>
+    
+    <p>채널 이름 : {{ value.channelname }}</p>
+    <p>영상 제목 : {{ value.title }}</p>
+    <p>업로드 날짜 : {{ value.youtime }}</p>
+    <p>조회수 : {{ value.views }}</p>
+    <p>좋아요 : {{ value.youtlikes }}</p>
+    <p>장소 : {{ value.Places.pname }}</p> 
+    <br>
+    <br>
+{% endfor %}
